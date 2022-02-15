@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block body %}
+<h1 class="text-center"> Users List <h1> <hr><hr>
+<center>
+ <a href={{path('add_user')}} class="btn btn-outline-success" >Ajouter Nouveau Utilisateur</a> <br><br>
+<section id="users">
+
+    {% for user in users %}
+    
+        <div class ="container">
+        
+            <div class="col" style=" background-color: antiquewhite;">
+            
+               nom: {{user.username}}
+               roles: {{user.roles | join('|')}} 
+               <a href={{path('edit_user',{'id':user.id})}} class="btn btn-success" >Modifier</a>  
+               <a href={{path('delete_user',{'id':user.id})}} class="btn btn-success" >Supprimer</a>  
+               <hr><hr>
+            </div>
+        </div>
+    {% endfor %}
+</section>
+</center>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block body %}
+<br><br>
+{{form_start(UserForm)}}
+{{form_row(UserForm.username)}}
+{{form_row(UserForm.email)}}
+{{form_row(UserForm.roles)}}
+{{form_row(UserForm.password)}}
+{{form_row(UserForm.confirm_password)}}
+<center>
+<div class="form-group form-button">
+    {% if not editMode %}
+    <input type="submit" name="signin" id="signin" class="btn btn-success" value="Ajouter"/>
+    {% else %}
+    <input type="submit" name="signin" id="signin" class="btn btn-success" value="Modifier"/>
+    {% endif %}
+</div></center>
+{{form_end(UserForm)}}
+{% endblock %}

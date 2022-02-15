@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editor Panel{% endblock %}
+
+{% block body %}
+<h1 class="text-center"> Product List <h1> <hr><hr>
+<center>
+ <a href={{path('add_product')}} class="btn btn-outline-success" >Ajouter Nouveau Produit</a> <br><br>
+ <section id="products">
+    <div class ="container">
+        
+        <div class="col" style=" background-color: antiquewhite;">
+            <hr><hr>
+        </div>
+    </div>
+    
+    <div class="noto-category">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="list-group" >
+                    <a href="#" class="list-group-item disabled" style=" background-color: antiquewhite; color:black;">
+                        Category
+                    </a>
+                    <a href={{path('display_notebooks')}} class="list-group-item">Notebook <span class="pull-right badge badge-dark">{{notebooks | length}}</span></a>
+                    
+                    <a href={{path('display_stickers')}} class="list-group-item">Sticker <span class="pull-right badge badge-dark">{{stickers | length}}</span></a>
+                    
+                </div>
+                </div>
+                
+                <div class="col-9">
+                    <div class="row">
+                    {% for product in products %}
+                        <div class="col-6 col-md-4">
+                            <div class="col-12">
+                                 <div class="col">
+                                    <a href = {{path('edit_product',{'id':product.id})}}>
+                                        <img src="{{asset('uploads/' ~ product.image)}}" width="250" height="160" class="img img-responsive"/>
+                                    </a>
+                                    <div class="text-center" > <a href={{path('edit_product',{'id':product.id})}} class="bt-title"> {{product.title}} </a> </div>
+                                    <p class ="text-center">{{product.price ~ " dt"}}</p>
+                                    <a href={{path('delete_product',{'id':product.id})}} class='btn btn-success'>Supprimer</a>
+                                </div>
+                            </div>
+                    </div>
+                    
+                {% endfor %}
+           
+                </div>
+  
+                </div>
+                
+                </div>
+                
+            </div>
+            
+        
+    </div>
+</div>
+</section>
+</center>
+
+
+{% endblock %}

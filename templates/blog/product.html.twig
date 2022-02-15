@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <!-- CSS -->
+    <link href="/css/product_style.css" rel="stylesheet">
+    <meta name="robots" content="noindex,follow" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous"> 
+
+  </head>
+
+  <body>
+    <main class="container">
+
+      <!-- Left Column / Headphones Image -->
+      <div class="left-column">
+        
+        <img data-image="red" class="active" src="{{asset('uploads/' ~ product.image)}}"  height="400" alt="" >
+      </div>
+
+
+      <!-- Right Column -->
+      <div class="right-column">
+
+        <!-- Product Description -->
+        <div class="product-description">
+          <span>{{product.catalogue.name}}</span>
+          <h1>{{product.title}}</h1>
+          <h3>Added At : {{product.dateAj |date("m/d/Y")}}</h3>
+          <p>{{product.content}}</p>
+        </div>
+
+        <!-- Product Configuration -->
+        <div class="product-configuration">
+
+          
+
+          
+
+        <!-- Product Pricing -->
+        <div class="product-price">
+          <span>{{product.price}}dt</span>
+
+        <form action={{path('cart_add',{'id':product.id})}} name='form' method="post">
+          
+          <label for="quan-select">Quantite</label>
+          <select name="quantity" id="quan-select">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+          </select>
+          <input type="submit" class="cart-btn" value="AJouter">
+        </form>
+
+        </div>
+      </div>
+    </main>
+
+    <br><br><br><br><hr><hr><br><br>
+    <center>
+    <section id="commentaire">
+    <h1> Comment Section </h1><br>
+      {% for comment in product.comments %}
+        <div class="comment">
+          <div class"row">
+            <div class="col-3">
+              
+              {{comment.author}} :
+              {{comment.content}} :
+              {{comment.dateCom |date("m/d/Y")}} <br><br>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </section>
+    <br><br><br><br><hr><hr><br><br>
+    <h1> Add Comment </h1><br><br>
+    {% if not app.user %}
+    <h3> You need to connect in order to submit a comment please login with your account ! </h3>
+    <a href={{path('signin')}} class="btn btn-success"> Connexion </a>
+    {% else %}
+    {{form_start(CommentForm)}}
+    {{form_row(CommentForm.content)}}
+    <input type="submit"  class="btn btn-success" value="Ajouter"/>  
+    {{form_end(CommentForm)}}
+     {% endif %}
+    </center><br><br>
+    
+  </body>
+</html>

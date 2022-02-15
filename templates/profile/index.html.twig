@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block body %}
+<h1 class="text-center"> Profile <h1> <hr><hr>
+<center>
+<section id="users">
+
+    {% for commande in commandes %}
+        
+        <div class ="container">
+        
+            <div class="col" style=" background-color: antiquewhite;">
+            
+               Date D'Achat : {{commande.dateCm | date("m/d/Y h:m")}}
+               
+               
+               <hr><hr>
+            </div>
+        </div>
+        {% for article in commande.panier.articles %}
+            
+            <img src="{{asset('uploads/' ~ article.image)}}" width="250" height="160" class="img img-responsive"/>
+            name : {{ article.title }} 
+            price : {{article.price}} <br>
+            
+        {% endfor %}
+        
+    {% endfor %}
+</section>
+</center>
+{% endblock %}

@@ -1,0 +1,34 @@
+.btn{
+    margin-left: 1em;
+}
+.container-fluid{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.noto-category{
+
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.noto-slider{
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: antiquewhite;
+}
+
+.noto-category .img{
+    margin-bottom: 15px;
+}
+.noto-category .bt-title{
+    color: burlywood;
+    
+}
+.noto-footer{
+
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background: #202020;
+    color: white;
+    
+}
+

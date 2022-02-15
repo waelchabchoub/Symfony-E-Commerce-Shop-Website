@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Commande{% endblock %}
+
+{% block body %}
+<div class="bg-light p-3">
+    <h1>Votre Commande</h1>
+</div>
+<table class="table">
+    <thead>
+    
+        <tr>
+            <th>Produit</th>
+            <th>Prix</th>
+            <th>Quantite</th>
+            <th>total</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for item in items %}
+        <tr>
+            <td>
+             <img src="{{asset('uploads/' ~ item.product.image)}}" width="150" height="60" class="img img-responsive"/>
+            </td>
+            <td>{{item.product.title}}</td>
+            <td>{{item.product.price}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.product.price * item.quantity}}</td>
+            
+           
+        </tr>
+    {% endfor %}
+    </tbody>
+
+    <tfoot>
+        <tr>
+            <td colspan="3" class="pull-right"> total : </td>
+            <td>{{total}}</td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>
+<center>
+<br><br>
+<a href={{path('commande_confirm')}} class=" btn btn-success">Confirmer</a>
+</center>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Editor Panel{% endblock %}
+{% block body %}
+
+<br><br>
+{{form_start(ProductForm)}}
+{{form_row(ProductForm.title)}}
+{{form_row(ProductForm.content)}}
+{{form_row(ProductForm.catalogue)}}
+{{form_row(ProductForm.price)}}
+{{form_row(ProductForm.file_image)}}
+<center>
+<br>
+
+<center>
+<div class="form-group form-button">
+    {% if not editMode %}
+    <input type="submit" name="signin" id="signin" class="btn btn-success" value="Ajouter"/>
+    {% else %}
+    <input type="submit" name="signin" id="signin" class="btn btn-success" value="Modifier"/>
+    {% endif %}
+</div></center>
+</center>
+{{form_end(ProductForm)}}
+
+
+
+{% endblock %}

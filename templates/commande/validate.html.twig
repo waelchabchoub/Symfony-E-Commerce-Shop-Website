@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Validation{% endblock %}
+
+{% block body %}
+<br><br>
+{{form_start(CommandeForm)}}
+{{form_row(CommandeForm.fullName)}}
+{{form_row(CommandeForm.numeroTel)}}
+{{form_row(CommandeForm.adresse)}}
+<center>
+
+<input type="submit" class="btn btn-success" value="Valider"/>
+
+</center>
+{{form_end(CommandeForm)}}
+{% endblock %}

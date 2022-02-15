@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noto{% endblock %}
+
+{% block body %}
+
+
+
+<div class="noto-category">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="list-group" >
+                    <a href="#" class="list-group-item disabled" style=" background-color: antiquewhite; color:black;">
+                        Category
+                    </a>
+                    <a href={{path('display_notebooks_blog')}} class="list-group-item">Notebook <span class="pull-right badge badge-dark">{{notebooks | length}}</span></a>
+                    
+                    <a href={{path('display_stickers_blog')}} class="list-group-item">Sticker <span class="pull-right badge badge-dark">{{stickers | length}}</span></a>
+                    
+                </div>
+                </div>
+                
+                <div class="col-9">
+                    <div class="row">
+                    {% for sticker in stickers %}
+                        <div class="col-6 col-md-4">
+                            <div class="col-12">
+                                 <div class="col">
+                                    <a href = {{path('product_details',{'id':sticker.id})}}>
+                                        <img src="{{asset('uploads/' ~ sticker.image)}}" width="250" height="160" class="img img-responsive"/>
+                                    </a>
+                                    <div class="text-center" > <a href={{path('product_details',{'id':sticker.id})}} class="bt-title"> {{sticker.title}} </a> </div>
+                                    <p class ="text-center">{{sticker.price ~ " dt"}}</p>
+                                </div>
+                            </div>
+                    </div>
+                    
+                {% endfor %}
+           
+                </div>
+  
+                </div>
+                
+                </div>
+                
+            </div>
+            
+        
+    </div>
+</div>
+{% endblock %}
